@@ -1,10 +1,11 @@
 ﻿using System.Text;
+
 using FizzBuzzEnterprizz.Extensions;
 using FizzBuzzEnterprizz.Models;
 
 namespace FizzBuzzEnterprizz.PatternProviders
 {
-    public class MapPatternProvider(IEnumerable<Transformation> Transformations) : IPatternProvider
+    public class PatternProvider(IEnumerable<Transformation> Transformations) : IPatternProvider
     {
         private List<Transformation> Transformations { get; } = Transformations.ToList();
 

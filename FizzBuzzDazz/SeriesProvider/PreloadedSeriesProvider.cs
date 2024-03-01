@@ -4,12 +4,13 @@ using FizzBuzzEnterprizz.SeriesModels;
 namespace FizzBuzzEnterprizz.SeriesProvider
 {
     public class PreloadedSeriesProvider(
-        int BufferLength,
+        int RequestedBufferLength,
         ISeriesProvider BaseProvider) : ISeriesProvider
     {
+        // TODO RequestedBufferLength => ActualLength
         private List<NumberPattern> Buffer { get; set; } =
             BaseProvider
-                .GetSeries(BufferLength)
+                .GetSeries(RequestedBufferLength)
                 .GetPatterns()
                 .ToList();
 
@@ -24,11 +25,11 @@ namespace FizzBuzzEnterprizz.SeriesProvider
             do
             {
                 yield return Buffer[number];
-                number = number == BufferLength 
-                    ? 0 
+                number = number == RequestedBufferLength
+                    ? 0
                     : number + 1;
             } while ((long)number + 1L <= Int32.MaxValue);
         }
-        private int GetStartingBufIndex(int start) => (start - 1) % Buffer.Count();
+        private int GetStartingBufIndex(int number) => (number - 1) % Buffer.Count;
     }
 }
