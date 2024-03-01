@@ -12,6 +12,7 @@ namespace FizzBuzzEnterprizz.SeriesProvider
                 .GetSeries(BufferLength)
                 .GetPatterns()
                 .ToList();
+
         public Series GetSeries() => new(GetInfiniteSequence(1));
         public Series GetSeries(int count) => new(GetRangeSequence(1, count));
         public Series GetSeries(int start, int count) => new(GetRangeSequence(start, count));

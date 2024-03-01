@@ -11,6 +11,7 @@ namespace FizzBuzzEnterprizz.PatternProviders
         public NumberPattern GetPattern(int number) => new(
                 number,
                 GetCorrespondents(number)?.ToString());
+
         private StringBuilder? GetCorrespondents(int number) =>
             new StringBuilder()
                 .AppendJoin(string.Empty, GetCorrespondentsSequence(number))
